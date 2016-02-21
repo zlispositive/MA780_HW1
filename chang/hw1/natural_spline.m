@@ -1,4 +1,5 @@
-function sp = natural_spline(y,knote,xx)
+function sp = natural_spline(knote,y,xx)
+%%% Useage sp = natural_spline(x,y,xx)
 %%% program to calculate the natural spline of a function
 %%% using the sparse matrix operations of MATLAB
 %%% use the same structure as MATLAB's spline function return (pp form)
@@ -22,8 +23,7 @@ mu = 1 - lambda;
 d1 = h(1:end-1) + h(2:end) ;
 d2 = (y(3:end) - y(2:end-1))./h(2:end) ;
 d2 = d2 - (y(2:end-1) - y(1:end-2))./h(1:end-1);
-d = d1 .* d2;
-d = 6 ./ d;
+d = 6 ./ d1 .* d2;
 % matrix to solve
 A = eye(length(lambda));
 A = 2 * A + diag(lambda(1:end-1),1) + diag(mu(2:end),-1);
@@ -38,6 +38,7 @@ b(end) = b(end) - mu(end)*Mn;
 b = b';
 M = A\b;
 M = [0; M; 0];
+
 
 %% calculate the coeficient
 coef = ones(sp.pieces,4);
@@ -56,7 +57,6 @@ if exist('xx','var')
     for xi= xx
         yy = [yy envIntp(coef,knote,xi)];
     end
-    
     sp.yy = yy;
 end
 
@@ -65,11 +65,9 @@ end
 
 function y = envIntp(coef,x,xi)
 %%% calculate the value of points from spline
-xi
-x
 for i=1:length(x)-1
     if (ge(xi,x(i)) && le(xi,x(i+1)))
-        y = coef(i,1)*(x(i+1)-xi)^3 + coef(i,2)*(xi-x(i))^3 + coef(i,3)*(x(i+1)-xi) + coef(i,3)*(xi-x(i));
+        y = coef(i,1)*(x(i+1)-xi)^3 + coef(i,2)*(xi-x(i))^3 + coef(i,3)*(x(i+1)-xi) + coef(i,4)*(xi-x(i));
         break;
     end
 end
