@@ -81,14 +81,16 @@
 	g(t)&=c=\dfrac{y+1}{2}
 \end{align*}
 
-Therefore, $L_\infty$ approximation for f is $g(t) = \dfrac{y+1}{2}$, with error $ \|f-g\|_{\infty}=\dfrac{y-1}{2} $.
+Therefore, the $L_\infty$ approximation for $f(x)$ is $g(t) = \dfrac{y+1}{2}$, with error $ \|f-g\|_{\infty}=\dfrac{y-1}{2} $.
 
 \paragraph{\textbf{Problem 2 Page 119 Part b}} Let $ g(t) $ be the approximation to $ f $,
 \begin{align*}
 	\|f-g\|_2&=({\sum_{i=1}^{N}|f(t_i)-g(t_i)|^{2}} )^{\frac{1}{2}}\\
 			&=\sqrt{(N-1)(c-1)^2+(c-y)^2} = \sqrt{Nc^2-2(N-1+y)c+(N-1)+y^2}
 \end{align*}\\
-Solve this the function $ h(c)=Nc^2-2(N-1+y)c+(N-1)+y^2 $ for the minimum value and we get $ c=\dfrac{N-1+y}{N} $. Therefore $ \|f-g\|_2=y^2(1-\dfrac{1}{N})-y(\dfrac{2N-2}{N})+\dfrac{N-1}{N} $
+Solve this the function $ h(c)=Nc^2-2(N-1+y)c+(N-1)+y^2 $ for the minimum value and we get $ c=\dfrac{N-1+y}{N} $.
+
+Therefore, the $L_2$ approximation for $f(x)$ is $g(t) = \dfrac{N-1+y}{N}$,  with error $ \|f-g\|_2=y^2(1-\dfrac{1}{N})-y(\dfrac{2N-2}{N})+\dfrac{N-1}{N} $
 
 \paragraph{\textbf{Problem 2 Page 119 Part c}} As $ N\rightarrow \infty $, the constant in the least square approximation goes to 1. It shows the least square approximation weights less on the outliers than the infinity approximation. Request more input.
 
@@ -98,12 +100,12 @@ Define the following $ \hat{f}(x)=1+cx $ and $ f(x)=e^x $.\\
 \begin{align*}
 	\|\hat{f}-f\|^2_2=&\int_{0}^{1}|e^x-1-cx|^2 dx=\int_{0}^{1}e^{2x}-2e^x(1+cx)+(1-cx)^2dx\\
 	=&\int_{0}^{1}e^{2x}-(2e^x+2ce^xx)+(1-2cx+c^2x^2)dx\\
-	=&\dfrac{1}{3}c^2-c+C
+	=&\dfrac{1}{3}c^2-c+\dfrac{e^2}{2}-2 e + \dfrac{5}{2}
 \end{align*}
-$ C $ is some constant that we do not care. Minimize the function $ h(c)=\dfrac{1}{3}c^2-c+C $ and the minimum reaches at $ c=\dfrac{3}{2} $.
+Minimize the function $ h(c)=\dfrac{1}{3}c^2-c+\dfrac{e^2}{2}-2 e + \dfrac{5}{2} $ and the minimum reaches at $ c=\dfrac{3}{2} $.
 
 \paragraph{\textbf{Problem 5 Page 119 Part b}}
-Solve for the general case, $ max_{0 \leq x\leq 1} |e^x-(1+cx)| $. Let $  f_c(x)=e^x-(1+cx) $ and,
+Solve for the general case, $ \displaystyle\max_{0 \leq x\leq 1} |e^x-(1+cx)| $. Let $  f_c(x)=e^x-(1+cx) $ and,
 \begin{align*}
 	f_c^\prime (x)&=e^x-c
 \end{align*}
@@ -115,17 +117,19 @@ Define the following minimization problem,
 	\min_{0\leq x\leq 1} \|e^x-(1+c_1x+c_2x^2) \|_2^2
 \end{align*}
 \begin{align*}
-	\int_{0}^{1}(e^x-(1+c_1x+c_2x^2))^2dx&=\frac{1}{3}c_1^2+\frac{1}{2}(c_2-2)c_1+\frac{1}{5}c_2^2+C=g(c_1,c_2)
+	g(c_1,c_2) &= \int_{0}^{1}(e^x-(1+c_1x+c_2x^2))^2dx\\
+                &=\frac{1}{3}c_1^2+\frac{1}{2}(c_2-2)c_1+\frac{1}{5}c_2^2+\left(\dfrac{14}{3}-2e \right) c_2 + \dfrac{1}{2} \left( 5 - 4e + e^2\right)
 \end{align*}
 \begin{align*}
 	\dfrac{\partial g}{\partial c_1}&=\dfrac{1}{2}(c_2-2)+\dfrac{2}{3}c_1=0\\
 	\dfrac{\partial g}{\partial c_2}&=\dfrac{1}{2}c_1+\dfrac{2}{5}c_2+\dfrac{14}{3}-2e=0\\
 \end{align*}
-Solve this system of equations and get $ c_1=0.9031 $ and $ c_2=0.7959 $.
+Solve this system of equations and get $ c_1=164-60e = 0.9031 $ and $ c_2=80e - \dfrac{650}{3}= 0.7959 $.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\linewidth]{Q5.jpg}
+\includegraphics[width=0.49\linewidth]{q5_b.png}
+\includegraphics[width=0.49\linewidth]{q5_c.png}
 \caption{Error curves of $ e_1(x) $ and $ e_2(x) $}
 \label{fig:Q5}
 \end{figure}
@@ -144,7 +148,16 @@ We use two different method to solve this problem.
 		The relative error is $ 0.10282\% $
 	
 	\item Newton's Interpolation\\
-	Chang Chang
+	To solve the problem in Newton's form, first let's creating the divided difference table using the given points.
+    
+    \begin{tabular}{ c|c c c }
+      % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+      $x_i$ & $f(x)$ & $f[x_i,x_{i-1}]$ & f[x_i,x_{i-1},x_{i-2}] \\ \hline
+      $10$ & $\ln(10)$ &   &   \\
+      $11$ & $\ln(11)$ & $\ln(11/10)$ &   \\
+      $12$ & $\ln(12)$ & $\ln(12/11)$ & $0.5\ln(121/120)$ \\
+    \end{tabular}
+    
 \end{enumerate}
 \newpage
 

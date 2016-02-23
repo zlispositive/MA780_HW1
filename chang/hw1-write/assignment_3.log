@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.29)  22 FEB 2016 22:53
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.29)  22 FEB 2016 23:30
 entering extended mode
 **C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/assignment_3.tex
 (C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/assignment_3.tex
@@ -571,14 +571,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
 [4 <C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/q5_b.png> <C:/cygwin64/
 home/Chang/hw/MA780_HW1/chang/hw1-write/q5_c.png>] [5] [6] [7]
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 247
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 260
 .
 
 (C:\CTEX\MiKTeX\tex\latex\fourier\ts1futs.fd
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
 )
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 249.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 262.
  [8]
 (C:\cygwin64\home\Chang\hw\MA780_HW1\chang\hw1-write\assignment_3.aux) ) 
 Here is how much of TeX's memory you used:
@@ -595,7 +595,7 @@ rier/fourier-mex.pfb><C:/CTEX/MiKTeX/fonts/type1/public/fourier/fourier-mlit.pf
 b><C:/CTEX/MiKTeX/fonts/type1/public/fourier/fourier-ms.pfb><C:/CTEX/MiKTeX/fon
 ts/type1/adobe/utopia/putb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/adobe/utopia/putr8
 a.pfb><C:/CTEX/MiKTeX/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on assignment_3.pdf (8 pages, 152859 bytes).
+Output written on assignment_3.pdf (8 pages, 154594 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
