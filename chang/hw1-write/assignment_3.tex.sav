@@ -18,7 +18,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[paper=letter, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[paper=letter, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
@@ -140,6 +140,7 @@ Therefore, the $L_2$ approximation for $f(x)$ is $g(t) = \dfrac{N-1+y}{N}$,  wit
 
 \paragraph{\textbf{Problem 2 Page 119 Part c}} As $ N\rightarrow \infty $, the constant in the least square approximation goes to 1. It shows the least square approximation weights less on the outliers than the infinity approximation. Request more input.
 
+\newpage
 \paragraph{\textbf{Problem 5 Page 119 Part a}}
 Define the following $ \hat{f}(x)=1+cx $ and $ f(x)=e^x $.\\
 \begin{align*}
@@ -179,6 +180,7 @@ Solve this system of equations and get $ c_1=164-60e = 0.9031 $ and $ c_2=80e - 
 \label{fig:Q5}
 \end{figure}
 
+\newpage
 \paragraph{\textbf{Problem 33 Page 126}}
 We use two different method to solve this problem.
 \begin{enumerate}
@@ -207,7 +209,7 @@ We use two different method to solve this problem.
     therefore, $ p(11.1) = 2.407882724933612,$ the relative error for the interpolation is $$\epsilon_{rel} = \dfrac{|p(11) - \ln(11.1)|}{\ln(11.1)} = 3.895\times 10^{-4}$$
 
 \end{enumerate}
-
+\newpage
 
 \paragraph{\textbf{Problem 36 Page 126 Part a}}
 
@@ -267,15 +269,14 @@ So that
 
 
 
+
 \newpage
 \section*{Programming Assignment}
-\paragraph{Problem 9 Page 137} $\,$\\
+\paragraph{Problem 9 Page 137}
 
-The coding are listed in the Appendix. As the question asked for a natural spline, M relationship were used, so that the boundary condition $f^{(2)}(a) = f^{(2)}(b) = 0$ can be set as $M_0 = M_n = 0$.
+The coding are listed in the Appendix. As the question asked for a natural spline, M relationship were used, so that the boundary condition $f^{(2)}(a) = f^{(2)}(b) = 0$ can be set as $M_0 = M_n = 0$
 
-The spline get from our script and the MATLAB's default spline function's results are shown in figure \ref{fig:proc}. As shown in the figure, for $f(x) = e^x$, $f(x) = \cos(2\pi x)$, and $f(x) = \sqrt{x}$, both our script and MATLAB's default routine did a good job. Due to the different method for treating the boundary points, the edge of the two method for $f(x) = \cos(2\pi x)$ and $f(x) = \sqrt{x}$ are slightly different.
-
-Splines for $f(x) = \cos(20\pi x)$, on the other hand, is a very poor approximation for the original function. This is due to the selection of knots are accidentally having the same value. Increasing the number or knots will help to solve this issue.(see figure \ref{fig:refine})
+The spline get from our script and the MATLAB's default spline function's results are shown in 
 
 \begin{figure}[h]
 \includegraphics[width=0.5\linewidth]{../hw1-proc/func_1.png}
@@ -285,16 +286,9 @@ Splines for $f(x) = \cos(20\pi x)$, on the other hand, is a very poor approximat
 \caption{Natural spline(blue), MATLAB's default spline(red) and the true value(red) of given functions in domain $[0,1]$. The circles are the knots. }
 \label{fig:proc}
 \end{figure}
-\break
-\begin{figure}[h]
-\includegraphics[width=\linewidth]{../hw1-proc/funcL_3.png}
-\caption{Increasing the knots by 5 times for $f(x) = \cos(20\pi x)$}
-\label{fig:refine}
-\end{figure}
+
 
 \newpage
-\section*{Appendix}
-
 \paragraph{Appendix A}
 
 natural\_spline.m

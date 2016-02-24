@@ -18,7 +18,8 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[paper=letter, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
@@ -48,6 +49,34 @@
 
 \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
 
+\usepackage{mcode}
+\usepackage{listings}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{subcaption}
+%\hoffset=.2in
+\setlength{\textwidth}{6.575in}
+\setlength{\textheight}{9in}
+%\addtolength{\textheight}{50pt}
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{.0in}
+\setlength{\evensidemargin}{.0in}
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+	%Put command \setcounter{equation}{0} at start of each new section
+
+\newcommand{\e}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\E}{\begin{eqnarray}}
+\newcommand{\EE}{\end{eqnarray}}
+\newcommand{\vbar}{\overline{v}}
+\newcommand{\Var}{\mbox{Var}}
+\newcommand{\rsub}[1]{\mbox{\tiny #1}}
+\newcommand{\ROrcp}{\rho_{\rsub{rcp}}}
+\newcommand{\ROcssm}{\rho_{\rsub{cssm}}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\Oh}{{\mathcal O }}
+\newcommand{\no}{\noindent}
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -68,9 +97,26 @@
 
 \begin{document}
 
+
 \maketitle % Print the title
 
 %----------------------------------------------------------------------------------------
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
 %	PROBLEM 1
 %----------------------------------------------------------------------------------------
 
@@ -186,8 +232,15 @@ Solve the following inequality,
 	\dfrac{e^{1}}{(n+1)!}\dfrac{1}{2^n}\leq 10^{-6}
 \end{align*}
 The smallest n is 7.
+
 \paragraph{\textbf{Problem 36 Page 126 Part b}}
-What is connection between the Talyor polynomial and the interpolation polynomial???
+For Taylor polynomial, the error can be written as:
+\begin{align*}
+	|E(x)| = &|e^x-p_n(f;x)| = |\dfrac{e^{\xi(x)}}{(n+1)!}x^{n+1}|
+\end{align*}
+On the domain $[0,1]$, $\displaystyle\max_{0\le x\le1}(|E(x)|) = \dfrac{e}{(n+1)!}$. So that only when $n \ge 10$, $\displaystyle\max_{0\le x\le1}(|E(x)|) \le 1\times 10^{-6}$
+
+According to this calculation result, we can see interpolation is a better approximation method than Taylor polynomial for the given problem. Thanks to the separation of the gird point, the interpolation approximation converge to the true function faster than Taylor series with a factor of $2^{-n}$
 \newpage
 
 \paragraph{\textbf{Problem 46 Page 128}}
@@ -195,10 +248,23 @@ We know that,
 \begin{align*}
 	T_n(\cos\theta)=\cos(n\theta)
 \end{align*}
-Take derivative with respect to $ \theta $ and set it to $ \dfrac{\pi}{2} $,
+Let's $x = \cos\theta$, then we have
 \begin{align*}
-	T_n^\prime(\cos\theta)&=n\sin(n\theta)\sin(\theta)\\
-	T_n^\prime(0)&=n\sin(\dfrac{n\pi}{2})
+	\dfrac{dT_n(x)}{d\theta}&=\dfrac{dT_n(x)}{dx} \dfrac{dx}{d\theta}.
+\end{align*}
+So that,
+\begin{align*}
+	\dfrac{dT_n(x)}{dx}& =\dfrac{dT_n(x)}{d\theta} \Big/ \dfrac{dx}{d\theta} \\
+                        & = n \dfrac{\sin n\theta}{\sin \theta}\\
+                        & = n \dfrac{\sin \left( n \cos^{-1} x\right)}{\sqrt{1-x^2}}
+\end{align*}
+So that
+\begin{align*}
+    \dfrac{dT_n(0)}{dx} & = n \sin \left( \dfrac{n\pi}{2}\right) \\	
+                        & = \begin{cases}
+                                0 \quad \text{n is even,}\\
+                                (-1)^{(n-1)/2} \quad \text{n is odd.}\\
+                            \end{cases}
 \end{align*}
 
 
@@ -206,78 +272,48 @@ Take derivative with respect to $ \theta $ and set it to $ \dfrac{\pi}{2} $,
 
 \newpage
 \section*{Programming Assignment}
-\paragraph{Problem 9 Page 137}
+\paragraph{Problem 9 Page 137} $\,$\\
 
-\section{Problem title}
+The coding are listed in the Appendix. As the question asked for a natural spline, M relationship were used, so that the boundary condition $f^{(2)}(a) = f^{(2)}(b) = 0$ can be set as $M_0 = M_n = 0$.
 
-\lipsum[2] % Dummy text
+The spline get from our script and the MATLAB's default spline function's results are shown in figure \ref{fig:proc}. As shown in the figure, for $f(x) = e^x$, $f(x) = \cos(2\pi x)$, and $f(x) = \sqrt{x}$, both our script and MATLAB's default routine did a good job. Due to the different method for treating the boundary points, the edge of the two method for $f(x) = \cos(2\pi x)$ and $f(x) = \sqrt{x}$ are slightly different.
 
-\begin{align}
-\begin{split}
-(x+y)^3 	&= (x+y)^2(x+y)\\
-&=(x^2+2xy+y^2)(x+y)\\
-&=(x^3+2x^2y+xy^2) + (x^2y+2xy^2+y^3)\\
-&=x^3+3x^2y+3xy^2+y^3
-\end{split}					
-\end{align}
+Splines for $f(x) = \cos(20\pi x)$, on the other hand, is a very poor approximation for the original function. This is due to the selection of knots are accidentally having the same value. Increasing the number or knots will help to solve this issue.(see figure \ref{fig:refine})
 
-Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies
+\begin{figure}[h]
+\includegraphics[width=0.5\linewidth]{../hw1-proc/func_1.png}
+\includegraphics[width=0.5\linewidth]{../hw1-proc/func_2.png}
+\includegraphics[width=0.5\linewidth]{../hw1-proc/func_3.png}
+\includegraphics[width=0.5\linewidth]{../hw1-proc/func_4.png}
+\caption{Natural spline(blue), MATLAB's default spline(red) and the true value(red) of given functions in domain $[0,1]$. The circles are the knots. }
+\label{fig:proc}
+\end{figure}
 
-%------------------------------------------------
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{../hw1-proc/funcL_3.png}
+\caption{Increasing the knots by 5 times for $f(x) = \cos(20\pi x)$}
+\label{fig:refine}
+\end{figure}
 
-\subsection{Heading on level 2 (subsection)}
+\newpage
+\paragraph{Appendix A}
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-\begin{align}
-A =
-\begin{bmatrix}
-A_{11} & A_{21} \\
-A_{21} & A_{22}
-\end{bmatrix}
-\end{align}
-Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+natural\_spline.m
 
-%------------------------------------------------
+\lstinputlisting[xleftmargin=.8cm]{../hw1-proc/natural_spline.m}
 
-\subsubsection{Heading on level 3 (subsubsection)}
+\newpage
+\paragraph{Appendix B}
 
-\lipsum[3] % Dummy text
+S\_nat.m
 
-\paragraph{Heading on level 4 (paragraph)}
+\lstinputlisting[xleftmargin=.8cm]{../hw1-proc/S_nat.m}
 
-\lipsum[6] % Dummy text
+\newpage
+\paragraph{Appendix C}
 
-%----------------------------------------------------------------------------------------
-%	PROBLEM 2
-%----------------------------------------------------------------------------------------
+test\_func.m
 
-\section{Lists}
-
-%------------------------------------------------
-
-\subsection{Example of list (3*itemize)}
-\begin{itemize}
-	\item First item in a list
-		\begin{itemize}
-		\item First item in a list
-			\begin{itemize}
-			\item First item in a list
-			\item Second item in a list
-			\end{itemize}
-		\item Second item in a list
-		\end{itemize}
-	\item Second item in a list
-\end{itemize}
-
-%------------------------------------------------
-
-\subsection{Example of list (enumerate)}
-\begin{enumerate}
-\item First item in a list
-\item Second item in a list
-\item Third item in a list
-\end{enumerate}
-
-%----------------------------------------------------------------------------------------
+\lstinputlisting[xleftmargin=.8cm]{../hw1-proc/test_func.m}
 
 \end{document}
