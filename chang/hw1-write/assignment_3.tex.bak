@@ -140,24 +140,28 @@ We use two different method to solve this problem.
 \begin{enumerate}
 	\item Lagrange Interpolation\\
 		\begin{align*}
-			i&=0,~l_0(x)=\dfrac{x-x_1}{x_0-x_1}\dfrac{x-x_2}{x_0-x_2}\\
-			i&=1,~l_0(x)=\dfrac{x-x_0}{x_1-x_0}\dfrac{x-x_2}{x_1-x_2}\\
-			i&=2,~l_0(x)=\dfrac{x-x_0}{x_2-x_0}\dfrac{x-x_1}{x_2-x_1}\\
-			p(x)&=\ln(10)*l_0(x)	+ \ln(11)*l_1(x)+\ln(12)*l_2(x)
+			i&=0,~l_0(x)=\dfrac{x-x_1}{x_0-x_1}\dfrac{x-x_2}{x_0-x_2}=\dfrac{(x-11)(x-12)}{2}\\
+			i&=1,~l_0(x)=\dfrac{x-x_0}{x_1-x_0}\dfrac{x-x_2}{x_1-x_2}=-(x-10)(x-12)\\
+			i&=2,~l_0(x)=\dfrac{x-x_0}{x_2-x_0}\dfrac{x-x_1}{x_2-x_1}=\dfrac{(x-10)(x-11)}{2}\\
+			p(x)&=\ln(10)*l_0(x)	+ \ln(11)*l_1(x)+\ln(12)*l_2(x)\\
+            p(11.1) &= 2.406969856623995
 		\end{align*}
-		The relative error is $ 0.10282\% $
+		The relative error is $ 1.028\times 10^{-5} $
 	
 	\item Newton's Interpolation\\
 	To solve the problem in Newton's form, first let's creating the divided difference table using the given points.
-    
+
     \begin{tabular}{ c|c c c }
       % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-      $x_i$ & $f(x)$ & $f[x_i,x_{i-1}]$ & f[x_i,x_{i-1},x_{i-2}] \\ \hline
+      $x_i$ & $f(x)$ & $f[x_i,x_{i-1}]$ & $f[x_i,x_{i-1},x_{i-2}]$ \\ \hline
       $10$ & $\ln(10)$ &   &   \\
       $11$ & $\ln(11)$ & $\ln(11/10)$ &   \\
       $12$ & $\ln(12)$ & $\ln(12/11)$ & $0.5\ln(121/120)$ \\
     \end{tabular}
-    
+
+    Then, the interpolation polynomial can be written as $$p(x) = \ln(10) + (x-10)\ln(11/10) + 0.5(x-10)(x-11)\ln(121/120).$$
+    therefore, $ p(11.1) = 2.407882724933612,$ the relative error for the interpolation is $$\epsilon_{rel} = \dfrac{|p(11) - \ln(11.1)|}{\ln(11.1)} = 3.895\times 10^{-4}$$
+
 \end{enumerate}
 \newpage
 
@@ -181,7 +185,7 @@ Solve the following inequality,
 \begin{align*}
 	\dfrac{e^{1}}{(n+1)!}\dfrac{1}{2^n}\leq 10^{-6}
 \end{align*}
-The smallest n is 9.
+The smallest n is 7.
 \paragraph{\textbf{Problem 36 Page 126 Part b}}
 What is connection between the Talyor polynomial and the interpolation polynomial???
 \newpage

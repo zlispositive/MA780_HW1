@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.29)  22 FEB 2016 23:30
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.29)  23 FEB 2016 22:42
 entering extended mode
 **C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/assignment_3.tex
 (C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/assignment_3.tex
@@ -570,34 +570,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
  []
 
 [4 <C:/cygwin64/home/Chang/hw/MA780_HW1/chang/hw1-write/q5_b.png> <C:/cygwin64/
-home/Chang/hw/MA780_HW1/chang/hw1-write/q5_c.png>] [5] [6] [7]
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 260
-.
+home/Chang/hw/MA780_HW1/chang/hw1-write/q5_c.png>]
+Overfull \hbox (3.43887pt too wide) in paragraph at lines 197--198
+[]\T1/futs/m/n/10.95 According to this cal-cu-la-tion re-sult, we can see in-te
+r-po-la-tion is a bet-ter ap-prox-i-ma-tion method
+ []
 
-(C:\CTEX\MiKTeX\tex\latex\fourier\ts1futs.fd
-File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
-)
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 262.
- [8]
+[5] [6] [7]
 (C:\cygwin64\home\Chang\hw\MA780_HW1\chang\hw1-write\assignment_3.aux) ) 
 Here is how much of TeX's memory you used:
- 4745 strings out of 495354
- 63761 string characters out of 3183859
+ 4703 strings out of 495354
+ 63174 string characters out of 3183859
  232058 words of memory out of 3000000
- 7792 multiletter control sequences out of 15000+200000
- 102019 words of font info for 112 fonts, out of 3000000 for 9000
+ 7762 multiletter control sequences out of 15000+200000
+ 84339 words of font info for 101 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 35i,14n,47p,682b,228s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,16n,47p,682b,228s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTE
 X/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/MiKTeX/fonts/type1/public/fou
 rier/fourier-mex.pfb><C:/CTEX/MiKTeX/fonts/type1/public/fourier/fourier-mlit.pf
 b><C:/CTEX/MiKTeX/fonts/type1/public/fourier/fourier-ms.pfb><C:/CTEX/MiKTeX/fon
 ts/type1/adobe/utopia/putb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/adobe/utopia/putr8
 a.pfb><C:/CTEX/MiKTeX/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on assignment_3.pdf (8 pages, 154594 bytes).
+Output written on assignment_3.pdf (7 pages, 150871 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
